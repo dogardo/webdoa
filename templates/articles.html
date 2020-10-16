@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+
+
+
+<div class="navbar navbar-expand-lg navbar-light shadow-lg container rounded" style="margin-top :15px;">
+<div class="navbar-collapse collapse" id="navbarsExample09" style="false">
+
+      <ul class="navbar-nav text-center" style = "margin-left: 5px;">
+      
+      
+<li ><a class="nav-link" href="/articles/?keyword=%28dövme%29">Dövme</a></li>
+<li><a class="nav-link" href="/articles/?keyword=%28logo%29">Logo</a></li>
+<li><a class="nav-link" href="/articles/?keyword=%28website%29">Website</a></li>
+<li><a class="nav-link" href="/articles/?keyword=%28mimari%29">Mimari</a></li>
+      </ul>
+</div>
+</div>
+{% if articles %}
+
+{% for article in articles %}
+
+
+<div style="margin-top :15px;"class="shadow-lg my-3 p-3 bg-white rounded shadow-sm container">
+
+{% if article.article_image %}
+      <hr>
+      <a href="{% url 'article:detail' article.id %}" class=""><img class=" img-fluid rounded" style="display: block;margin-left: auto;margin-top: 25px;margin-bottom: 25px;margin-right: auto;" width="500" src="{{article.article_image.url}}" alt=""></a>
+      
+{% endif %}
+
+ 
+    <h6 style="font-size:30px;margin-top:15px" class="  pb-2 mb-0"><a href="{% url 'article:detail' article.id %}" class="text-muted text-center" ><h2 style="font-size:30px;"class="">{{article.title}}</h2></a> </h6>
+   <hr>
+        <p style="font-size:20px; margin-top:15px"class="media-body pb-3 mb-0 small lh-125 text-muted">
+           Açıklama: (Kod-{{article.id}}) <p style="font-size:12px; margin-top:10px" >{{article.content|safe|truncatewords:10}}</p>
+      
+    
+
+    
+    
+    <a style ="float : right;" href="{% url 'article:detail' article.id %}" class ="btn btn-danger">Devamını Oku</a>
+  
+<br><br>
+ <hr>  
+        <small class="d-block  mt-3">
+
+    </small>
+   
+    <p style="font-size:12px; margin-top:10px;" class="media-body pb-3 mb-0 small lh-125 text-muted text-right">
+           Eserin Siteye Eklenme Tarihi: {{article.created_date}}
+    </p>
+  </div>
+  
+{% endfor %}
+
+{% else %}
+
+
+{% endif %}
+
+
+
+
+{% endblock body %}

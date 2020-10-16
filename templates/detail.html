@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<div class="container">
+<div class="row ">
+
+<div  style="" class="container-sm  p-3 bg-white rounded shadow-lg col-3">
+    
+
+        <p style="; font-size:10px;"class="media-body pb-3 mb-0 small lh-125 text-muted border-bottom border-gray " >Oluşturulma Saati: {{article.created_date}}</p>
+        <small class="d-block  mt-3">
+        
+          {% if article.article_image %}
+          
+          <div class=" rounded" >
+          <a class="block right"><img class=" img-fluid rounded center block" style="center background-size: cover;margin-top: 25px;margin-bottom: 25px;margin-left:auto;margin-right:auto;" width="270" src="{{article.article_image.url}}" alt=""></a>
+        </div> <hr>{% endif %}
+           <p style="margin-top :15px; font-size:15px;"class="media-body pb-3 mb-0 small lh-125 text-muted border-bottom border-gray " >{{article.title}}</p>
+           <p style="margin-top :15px; font-size:15px;"class="media-body pb-3 mb-0 small lh-125 text-muted border-bottom border-gray " >Kod: {{article.id}}</p>
+           <p style="margin-top :15px; font-size:15px;"class="media-body pb-3 mb-0 small lh-125 text-muted border-bottom border-gray " >Eser Sahibi: {{article.author.username}}</p>
+           
+        </small>
+</div> 
+ 
+
+          <div  style="" class="container-sm  p-3 bg-none rounded col">
+
+        </div> 
+
+
+            <div  style="" class="container-sm  p-3 bg-white rounded shadow-lg col-8">
+    
+
+
+        <small class="d-block  mt-3">
+        
+          <p style="margin-top :15px; font-size:20px;"class="media-body pb-3 mb-0 small lh-125 text-muted" >Açıklama:</p>
+          <hr>
+          <p style="margin-top :0px; font-size:15px;"class="media-body pb-3 mb-0 small lh-125 text-muted" >{{article.content|safe}}</p>
+        
+        </small>
+        
+     </div> 
+      
+
+
+
+
+  </div></div>
+
+<br>
+{% endblock body %}
+
+
+
+
